@@ -58,6 +58,7 @@ body {
 
 #inputBox:focus {
     outline: none;
+    caret-color: transparent;
 }
 
 /* ------------------------------------------------------------------ */
