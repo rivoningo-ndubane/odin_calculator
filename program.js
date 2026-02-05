@@ -18,7 +18,10 @@ function multiply(a, b){
 
 
 function divide(a, b){
-    return a / b;
+    if (b === 0){
+        return "ERROR"
+    }
+    return round(a / b);
 }
 
 
@@ -27,7 +30,7 @@ function operate(operator, numOne, numTwo){
         case "add": return add(numOne, numTwo);
         case "subtract": return subtract(numOne, numTwo);
         case "multiply": return multiply(numOne, numTwo);
-        case "divide": return round(divide(numOne, numTwo));
+        case "divide": return divide(numOne, numTwo);
     }
 }
 
@@ -128,6 +131,18 @@ bottom.addEventListener('click', (e) => {
         numTwo = parseFloat(inputBox.value);
         let result = operate(operator, numOne, numTwo);
 
+        if (result === "ERROR") {
+            // Update displays
+            history.textContent = "ERROR: division by 0";
+            inputBox.value = "Invalid";
+
+            // Reset operator and control flag
+            operator = "";
+            secondTyped = false;
+
+            break outer;
+        }
+
         // Update displays
         history.textContent += `${numTwo} =`;
         inputBox.value = result;
@@ -168,8 +183,6 @@ bottom.addEventListener('click', (e) => {
 //----------------------------------------------------------------------
 // Keyboard support
 inputBox.addEventListener('keydown', (e) => {
-    e.preventDefault();
-    console.log(e.key);
     // Check for numbers pressed
     if (Number.isInteger(+(e.key))) {
         if (canClear) {
@@ -282,6 +295,18 @@ inputBox.addEventListener('keydown', (e) => {
         }
         numTwo = parseFloat(inputBox.value);
         let result = operate(operator, numOne, numTwo);
+
+        if (result === "ERROR") {
+            // Update displays
+            history.textContent = "ERROR: division by 0";
+            inputBox.value = "Invalid";
+
+            // Reset operator and control flag
+            operator = "";
+            secondTyped = false;
+
+            break outer;
+        }
 
         // Update displays
         history.textContent += `${numTwo} =`;
