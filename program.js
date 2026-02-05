@@ -49,6 +49,10 @@ const history = document.getElementById("history");
 // Focus on input box
 inputBox.focus();
 
+// custom event to fire of equal event
+let customEv = new Event('click', {bubbles:true})
+customEv.id = "equal";
+
 // Event handlers
 const bottom = document.querySelector(".bottom");
 bottom.addEventListener('click', (e) => {
@@ -83,7 +87,7 @@ bottom.addEventListener('click', (e) => {
     outer:if (e.target.className.includes("operator")) {
         if (secondTyped){
             secondTyped = false;
-            e.target.id = "equal";
+            bottom.dispatchEvent(customEv);
             break outer;
         }
 
@@ -123,7 +127,7 @@ bottom.addEventListener('click', (e) => {
     }
 
     // Handle equal operator
-    outer:if (e.target.id === "equal") {
+    outer:if (e.target.id === "equal" || e.id === "equal") {
         if (operator === "") {
             history.textContent = `${inputBox.value} =`;
             break outer;
@@ -227,7 +231,7 @@ inputBox.addEventListener('keydown', (e) => {
     outer:if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/") {
         if (secondTyped){
             secondTyped = false;
-            e.key = "Enter";
+            bottom.dispatchEvent(customEv);
             break outer;
         }
 
