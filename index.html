@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="program.js" defer></script>
+
+    <title>Odin Calculator</title>
+</head>
+<body>
+    <dv class="top">
+        <p id="logo">Odin Calculator</p>
+        <p id="history">invalid</p>
+    </dv>
+
+    <div class="middle">
+        <input type="text" id="inputBox" value="0" readonly>
+    </div>
+
+    <div class="bottom">
+        <div class="container">
+            <div class="button" id="clear">C</div>
+            <div class="button"></div>
+            <div class="button" id="backspace">&#9003;</div>
+            <div class="button" id="divide">&divide;</div>
+        </div>
+
+        <div class="container">
+            <div class="button number">7</div>
+            <div class="button number">8</div>
+            <div class="button number">9</div>
+            <div class="button" id="multiply">x</div>
+        </div>
+
+        <div class="container">
+            <div class="button number">4</div>
+            <div class="button number">5</div>
+            <div class="button number">6</div>
+            <div class="button" id="subtract">&minus;</div>
+        </div>
+
+        <div class="container">
+            <div class="button number">1</div>
+            <div class="button number">2</div>
+            <div class="button number">3</div>
+            <div class="button" id="add">+</div>
+        </div>
+
+        <div class="container">
+            <div class="button zero number">0</div>
+            <div class="button">.</div>
+            <div class="button" id="equal">=</div>
+        </div>
+    </div>
+</body>
+</html>
